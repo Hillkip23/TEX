@@ -26,6 +26,7 @@
       --xrp-blue:   #23292F;
       --purple:     #6B46C1;
       --green:      #059669;
+      --mmf-blue:   #2563EB;
     }
 
     html { scroll-behavior: smooth; }
@@ -288,14 +289,14 @@
     #products { background: var(--ink-mid); }
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
     }
     .product-card {
       background: rgba(10,15,26,0.4);
       border: 1px solid var(--rule);
       border-radius: 12px;
-      padding: 32px;
+      padding: 28px;
       transition: all 0.3s;
       cursor: pointer;
     }
@@ -307,31 +308,38 @@
     .product-card.active {
       background: rgba(11,107,107,0.1);
     }
+    .product-card.mmf:hover, .product-card.mmf.active {
+      border-color: var(--mmf-blue);
+      background: rgba(37,99,235,0.1);
+      box-shadow: 0 20px 40px rgba(37,99,235,0.2);
+    }
     .product-icon {
-      font-size: 40px;
-      margin-bottom: 16px;
+      font-size: 32px;
+      margin-bottom: 12px;
     }
     .product-name {
       font-family: 'Playfair Display', serif;
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--white);
       margin-bottom: 8px;
     }
     .product-desc {
-      font-size: 14px;
+      font-size: 13px;
       color: rgba(255,255,255,0.6);
       line-height: 1.6;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      min-height: 60px;
     }
     .product-yield {
       font-family: 'Playfair Display', serif;
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 700;
       color: var(--teal);
     }
+    .product-card.mmf .product-yield { color: var(--mmf-blue); }
     .product-yield-label {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--gold);
       font-family: 'DM Mono', monospace;
       margin-bottom: 16px;
@@ -340,10 +348,10 @@
       list-style: none;
     }
     .product-features li {
-      font-size: 13px;
+      font-size: 12px;
       color: rgba(255,255,255,0.6);
-      padding: 6px 0;
-      padding-left: 20px;
+      padding: 4px 0;
+      padding-left: 16px;
       position: relative;
     }
     .product-features li::before {
@@ -352,6 +360,7 @@
       left: 0;
       color: var(--teal);
     }
+    .product-card.mmf .product-features li::before { color: var(--mmf-blue); }
 
     /* ── DEMO PANEL ── */
     #demo { background: var(--bg); }
@@ -369,6 +378,8 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--rule);
+      flex-wrap: wrap;
+      gap: 16px;
     }
     .demo-title {
       display: flex;
@@ -390,6 +401,7 @@
     .demo-tabs {
       display: flex;
       gap: 8px;
+      flex-wrap: wrap;
     }
     .demo-tab {
       padding: 8px 16px;
@@ -408,6 +420,7 @@
       background: var(--teal);
       color: white;
     }
+    .demo-tab.mmf-tab.active { background: var(--mmf-blue); }
     .demo-body {
       padding: 32px;
     }
@@ -417,9 +430,11 @@
       display: flex;
       gap: 8px;
       margin-bottom: 24px;
+      flex-wrap: wrap;
     }
     .tenor-tab {
       flex: 1;
+      min-width: 100px;
       padding: 16px;
       background: rgba(255,255,255,0.05);
       border: 1px solid var(--rule);
@@ -617,6 +632,72 @@
       margin-top: 4px;
     }
 
+    /* MMF Specific */
+    .mmf-provider-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .mmf-provider {
+      flex: 1;
+      min-width: 120px;
+      padding: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .mmf-provider:hover {
+      border-color: var(--mmf-blue);
+    }
+    .mmf-provider.active {
+      background: var(--mmf-blue);
+      border-color: var(--mmf-blue);
+    }
+    .mmf-provider-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .mmf-provider-rate {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .mmf-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .mmf-feature-box {
+      background: rgba(37,99,235,0.1);
+      border: 1px solid rgba(37,99,235,0.3);
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .mmf-feature-icon {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .mmf-feature-title {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 4px;
+    }
+    .mmf-feature-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
     /* Swap Interface (Shared) */
     .swap-section { margin-bottom: 24px; }
     .swap-label {
@@ -663,6 +744,11 @@
       color: var(--teal);
       border: 1px solid var(--teal);
     }
+    .swap-token.mmf-token {
+      background: rgba(37,99,235,0.2);
+      border-color: var(--mmf-blue);
+      color: var(--mmf-blue);
+    }
     .swap-arrow {
       text-align: center;
       margin: 8px 0;
@@ -674,6 +760,9 @@
       border-radius: 8px;
       padding: 16px;
       margin-top: 16px;
+    }
+    .swap-details.mmf-details {
+      background: rgba(37,99,235,0.1);
     }
     .swap-detail {
       display: flex; justify-content: space-between;
@@ -700,6 +789,12 @@
       transition: background 0.2s;
     }
     .swap-btn:hover { background: var(--teal-mid); }
+    .swap-btn.mmf-btn {
+      background: var(--mmf-blue);
+    }
+    .swap-btn.mmf-btn:hover {
+      background: #1d4ed8;
+    }
 
     /* Yield Projection */
     .yield-projection {
@@ -733,6 +828,13 @@
       font-size: 13px;
       color: rgba(255,255,255,0.6);
       margin-top: 4px;
+    }
+    .yield-projection.mmf-projection {
+      background: rgba(37,99,235,0.1);
+      border-color: var(--mmf-blue);
+    }
+    .yield-projection.mmf-projection .yield-title {
+      color: var(--mmf-blue);
     }
 
     /* ── COMPARISON ── */
@@ -775,6 +877,12 @@
     .highlight-row td:first-child {
       color: var(--teal);
       font-weight: 600;
+    }
+    .highlight-row.mmf-row td {
+      background: rgba(37,99,235,0.1);
+    }
+    .highlight-row.mmf-row td:first-child {
+      color: var(--mmf-blue);
     }
 
     /* ── WAITLIST ── */
@@ -901,6 +1009,9 @@
     }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 900px) {
       .nav-inner { padding: 0 24px; }
       .nav-links { display: none; }
@@ -913,6 +1024,8 @@
       .bond-types { grid-template-columns: 1fr; }
       .compare-table { font-size: 12px; }
       .compare-table th, .compare-table td { padding: 12px; }
+      .mmf-features-grid { grid-template-columns: 1fr; }
+      .mmf-provider-tabs { flex-direction: column; }
     }
   </style>
 </head>
@@ -943,7 +1056,7 @@
       <div class="hero-eyebrow">Tokenized Kenyan Government Securities</div>
       <h1>Earn up to <em>15%</em> tax-free on African fixed income</h1>
       <p class="hero-sub">
-        T-bills, T-bonds, and diversified ETFs — all tokenized on XRP Ledger. Instant settlement. Global access. Sovereign backing.
+        T-bills, T-bonds, MMFs, and diversified ETFs — all tokenized on XRP Ledger. Instant settlement. Daily liquidity. Global access.
       </p>
       <div class="hero-actions">
         <a href="#demo" class="btn-primary">Try Interactive Demo</a>
@@ -953,6 +1066,10 @@
     <div class="hero-card">
       <div class="hero-card-label">Live CBK Rates — February 2026</div>
       <div class="rate-row">
+        <div class="rate-tenor">Money Market Funds</div>
+        <div class="rate-value" style="color: var(--mmf-blue);">9.5-11%</div>
+      </div>
+      <div class="rate-row">
         <div class="rate-tenor">T-Bills (91-364 day)</div>
         <div class="rate-value">7.6-9.2%</div>
       </div>
@@ -961,15 +1078,11 @@
         <div class="rate-value">10.5-12%</div>
       </div>
       <div class="rate-row">
-        <div class="rate-tenor">T-Bonds (10-30 year)</div>
-        <div class="rate-value">13-14%</div>
-      </div>
-      <div class="rate-row">
         <div class="rate-tenor">Infrastructure Bonds</div>
         <div class="rate-value" style="color: var(--gold);">15%*</div>
       </div>
       <div class="xrp-badge">
-        <span>●</span> Tax-exempt • XRP Ledger • 3s settlement
+        <span>●</span> Daily Liquidity • XRP Ledger • 3s settlement
       </div>
     </div>
   </div>
@@ -978,6 +1091,7 @@
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
+    <span class="ticker-item">MMF — Daily Yield <span>◆</span></span>
     <span class="ticker-item">T-Bills 91-Day <span>◆</span></span>
     <span class="ticker-item">T-Bills 182-Day <span>◆</span></span>
     <span class="ticker-item">T-Bills 364-Day <span>◆</span></span>
@@ -987,6 +1101,7 @@
     <span class="ticker-item">Infrastructure Bonds <span>◆</span></span>
     <span class="ticker-item">KES_GOV_ETF <span>◆</span></span>
     <!-- duplicate -->
+    <span class="ticker-item">MMF — Daily Yield <span>◆</span></span>
     <span class="ticker-item">T-Bills 91-Day <span>◆</span></span>
     <span class="ticker-item">T-Bills 182-Day <span>◆</span></span>
     <span class="ticker-item">T-Bills 364-Day <span>◆</span></span>
@@ -1002,11 +1117,25 @@
 <section id="products">
   <div class="section-wrap">
     <div class="section-eyebrow">Product Suite</div>
-    <h2>Three ways to invest in Kenya</h2>
-    <p class="section-sub">From short-term liquidity to long-term yield — all backed by the Government of Kenya and tokenized for global access.</p>
+    <h2>Four ways to invest in Kenya</h2>
+    <p class="section-sub">From daily liquidity to long-term yield — all backed by the Government of Kenya, regulated by CMA, and tokenized for global access.</p>
     
     <div class="products-grid" style="margin-top: 48px;">
-      <div class="product-card active" onclick="selectProduct('tbill')">
+      <div class="product-card mmf active" onclick="selectProduct('mmf')">
+        <div class="product-icon">💧</div>
+        <div class="product-name">Money Market Funds</div>
+        <div class="product-desc">Daily liquidity with competitive yields. Perfect for cash management and short-term parking.</div>
+        <div class="product-yield">10.2%</div>
+        <div class="product-yield-label">DAILY YIELD (NET)</div>
+        <ul class="product-features">
+          <li>Withdraw same day</li>
+          <li>Compound daily</li>
+          <li>KES 100 minimum</li>
+          <li>No lock-up period</li>
+        </ul>
+      </div>
+      
+      <div class="product-card" onclick="selectProduct('tbill')">
         <div class="product-icon">📅</div>
         <div class="product-name">Treasury Bills</div>
         <div class="product-desc">Short-term government securities with maturities from 91 to 364 days. Perfect for liquidity management.</div>
@@ -1037,11 +1166,11 @@
       <div class="product-card" onclick="selectProduct('etf')">
         <div class="product-icon">📊</div>
         <div class="product-name">KES_GOV_ETF</div>
-        <div class="product-desc">Diversified basket of T-bills and T-bonds. Auto-rebalanced quarterly. Set-and-forget yield.</div>
+        <div class="product-desc">Diversified basket of T-bills, bonds, and MMFs. Auto-rebalanced quarterly. Set-and-forget yield.</div>
         <div class="product-yield">11.5%</div>
         <div class="product-yield-label">TARGET APR (NET)</div>
         <ul class="product-features">
-          <li>Laddered duration (1-10Y)</li>
+          <li>Laddered duration (0-10Y)</li>
           <li>Auto-rebalance quarterly</li>
           <li>0.5% management fee</li>
           <li>Risk-optimized allocation</li>
@@ -1065,7 +1194,8 @@
           <span class="demo-title-text">XRP LEDGER TESTNET — LIVE</span>
         </div>
         <div class="demo-tabs">
-          <button class="demo-tab active" onclick="switchTab('tbill')" id="tab-tbill">T-Bills</button>
+          <button class="demo-tab mmf-tab active" onclick="switchTab('mmf')" id="tab-mmf">MMF</button>
+          <button class="demo-tab" onclick="switchTab('tbill')" id="tab-tbill">T-Bills</button>
           <button class="demo-tab" onclick="switchTab('tbond')" id="tab-tbond">T-Bonds</button>
           <button class="demo-tab" onclick="switchTab('etf')" id="tab-etf">ETF</button>
         </div>
@@ -1073,20 +1203,116 @@
       
       <div class="demo-body">
         
-        <!-- T-BILLS PANEL -->
-        <div id="panel-tbill">
+        <!-- MMF PANEL -->
+        <div id="panel-mmf">
+          <div class="mmf-provider-tabs">
+            <div class="mmf-provider active" onclick="selectMMF('genesis', this)">
+              <div class="mmf-provider-name">Genesis MMF</div>
+              <div class="mmf-provider-rate">10.2%</div>
+            </div>
+            <div class="mmf-provider" onclick="selectMMF('britam', this)">
+              <div class="mmf-provider-name">Britam MMF</div>
+              <div class="mmf-provider-rate">9.8%</div>
+            </div>
+            <div class="mmf-provider" onclick="selectMMF('sanlam', this)">
+              <div class="mmf-provider-name">Sanlam MMF</div>
+              <div class="mmf-provider-rate">9.5%</div>
+            </div>
+            <div class="mmf-provider" onclick="selectMMF('corporate', this)">
+              <div class="mmf-provider-name">Corporate MMF</div>
+              <div class="mmf-provider-rate">8.9%</div>
+            </div>
+          </div>
+          
+          <div class="mmf-features-grid">
+            <div class="mmf-feature-box">
+              <div class="mmf-feature-icon">⚡</div>
+              <div class="mmf-feature-title">Settlement</div>
+              <div class="mmf-feature-value">T+0</div>
+            </div>
+            <div class="mmf-feature-box">
+              <div class="mmf-feature-icon">🔄</div>
+              <div class="mmf-feature-title">Withdrawal</div>
+              <div class="mmf-feature-value">24/7</div>
+            </div>
+            <div class="mmf-feature-box">
+              <div class="mmf-feature-icon">📈</div>
+              <div class="mmf-feature-title">Compounding</div>
+              <div class="mmf-feature-value">Daily</div>
+            </div>
+          </div>
+          
+          <div class="swap-section">
+            <div class="swap-label">Investment Amount</div>
+            <div class="swap-input-group">
+              <div class="swap-input-header">
+                <span>Balance: 10,000.00 USDC</span>
+                <span>Max</span>
+              </div>
+              <div class="swap-input">
+                <input type="number" id="mmf-input" value="1000" oninput="calculateMMF()">
+                <div class="swap-token mmf-token">USDC</div>
+              </div>
+            </div>
+            
+            <div class="swap-arrow">↓</div>
+            
+            <div class="swap-label">You Receive</div>
+            <div class="swap-input-group">
+              <div class="swap-input">
+                <input type="text" id="mmf-output" value="129,500 KES_MMF" readonly style="color: var(--mmf-blue);">
+                <div class="swap-token mmf-token">KES_MMF</div>
+              </div>
+            </div>
+            
+            <div class="swap-details mmf-details">
+              <div class="swap-detail">
+                <span>Exchange Rate</span>
+                <span class="swap-detail-value">1 USDC = 129.5 KES</span>
+              </div>
+              <div class="swap-detail">
+                <span>Management Fee</span>
+                <span class="swap-detail-value">1.0% p.a.</span>
+              </div>
+              <div class="swap-detail">
+                <span>Regulator</span>
+                <span class="swap-detail-value">CMA Licensed</span>
+              </div>
+              <div class="swap-detail">
+                <span>Underlying</span>
+                <span class="swap-detail-value">T-Bills + Commercial Paper</span>
+              </div>
+            </div>
+            
+            <button class="swap-btn mmf-btn" onclick="connectWallet()">
+              Connect XRP Wallet
+            </button>
+          </div>
+          
+          <div class="yield-projection mmf-projection">
+            <div class="yield-header">
+              <span class="yield-icon">💧</span>
+              <span class="yield-title" style="color: var(--mmf-blue);">Projected Balance (30 Days)</span>
+            </div>
+            <div class="yield-amount" id="mmf-yield">$1,008.42</div>
+            <div class="yield-period" id="mmf-period">10.2% annualized, compounded daily</div>
+          </div>
+        </div>
+        
+        <!-- T-BILLS PANEL (Hidden by default) -->
+        <div id="panel-tbill" style="display: none;">
           <div class="tenor-tabs">
-            <div class="tenor-tab active" onclick="selectTenor(91)">
+            <div class="tenor-tab active" onclick="selectTenor(91, this)">
               <div class="tenor-name">91-Day</div>
               <div class="tenor-rate">7.63%</div>
               <div class="tenor-apr">APR</div>
             </div>
-            <div class="tenor-tab" onclick="selectTenor(182)">
+            <div class="tenor-tab" onclick="selectTenor(182, this)">
               <div class="tenor-name">182-Day</div>
               <div class="tenor-rate">7.80%</div>
               <div class="tenor-apr">APR</div>
             </div>
-            <div class="tenor-tab" onclick="selectTenor(364)">
+            <div class="tenor-tab" onclick="selectTenor(364, this)">
               <div class="tenor-name">364-Day</div>
               <div class="tenor-rate">9.21%</div>
               <div class="tenor-apr">APR</div>
@@ -1131,7 +1357,7 @@
               </div>
             </div>
             
-            <button class="swap-btn" onclick="alert('Connect XRP Wallet to proceed')">
+            <button class="swap-btn" onclick="connectWallet()">
               Connect XRP Wallet
             </button>
           </div>
@@ -1207,7 +1433,7 @@
               </div>
             </div>
             
-            <button class="swap-btn" onclick="alert('Connect XRP Wallet to proceed')">
+            <button class="swap-btn" onclick="connectWallet()">
               Connect XRP Wallet
             </button>
           </div>
@@ -1304,7 +1530,7 @@
               </div>
             </div>
             
-            <button class="swap-btn" onclick="alert('Connect XRP Wallet to proceed')">
+            <button class="swap-btn" onclick="connectWallet()">
               Connect XRP Wallet
             </button>
           </div>
@@ -1350,6 +1576,13 @@
             <td>KES 10,000 ($77)</td>
             <td class="highlight-row">$10</td>
           </tr>
+          <tr class="highlight-row mmf-row">
+            <td>Daily Liquidity</td>
+            <td class="compare-x">None</td>
+            <td class="compare-x">None</td>
+            <td class="compare-check">T+1</td>
+            <td class="compare-check">Instant</td>
+          </tr>
           <tr>
             <td>Settlement Speed</td>
             <td>T+2 days</td>
@@ -1390,7 +1623,7 @@
             <td>Free</td>
             <td>1-2%</td>
             <td>1.5-2.5%</td>
-            <td class="highlight-row">0.5% (ETF only)</td>
+            <td class="highlight-row">0.5-1.0%</td>
           </tr>
           <tr>
             <td>Tax Optimization</td>
@@ -1432,12 +1665,12 @@
       
       <div class="waitlist-form">
         <div class="form-row">
-          <label>Email Address</label>
-          <input type="email" placeholder="you@example.com" />
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" />
         </div>
         <div class="form-row">
-          <label>Country of Residence</label>
-          <select>
+          <label for="country">Country of Residence</label>
+          <select id="country">
             <option value="">Select country</option>
             <option>United States</option>
             <option>United Kingdom</option>
@@ -1447,9 +1680,10 @@
           </select>
         </div>
         <div class="form-row">
-          <label>Product Interest</label>
-          <select>
+          <label for="product">Product Interest</label>
+          <select id="product">
             <option value="">Select product</option>
+            <option>Money Market Funds (Daily Liquidity)</option>
             <option>Treasury Bills (Short-term)</option>
             <option>Treasury Bonds (Long-term)</option>
             <option>KES_GOV_ETF (Diversified)</option>
@@ -1457,8 +1691,8 @@
           </select>
         </div>
         <div class="form-row">
-          <label>Investment Range</label>
-          <select>
+          <label for="investment">Investment Range</label>
+          <select id="investment">
             <option value="">Select range</option>
             <option>$100 - $1,000</option>
             <option>$1,000 - $10,000</option>
@@ -1466,7 +1700,7 @@
             <option>$100,000+</option>
           </select>
         </div>
-        <button class="form-submit" onclick="alert('Thank you — you have been added to the waitlist.')">
+        <button class="form-submit" onclick="submitWaitlist()">
           Join Waitlist →
         </button>
       </div>
@@ -1479,7 +1713,7 @@
   <div class="footer-inner">
     <div class="footer-logo">Tokim <span>Exchange</span></div>
     <div class="footer-links">
-      <a href="https://tokim-analytics1.vercel.app" target="_blank">Tokim Analytics</a>
+      <a href="https://tokim-analytics1.vercel.app" target="_blank" rel="noopener">Tokim Analytics</a>
       <a href="#">Documentation</a>
       <a href="#">Terms</a>
       <a href="#">Privacy</a>
@@ -1492,6 +1726,7 @@
   // Tab Switching
   function switchTab(tab) {
     // Hide all panels
+    document.getElementById('panel-mmf').style.display = 'none';
     document.getElementById('panel-tbill').style.display = 'none';
     document.getElementById('panel-tbond').style.display = 'none';
     document.getElementById('panel-etf').style.display = 'none';
@@ -1508,6 +1743,41 @@
     switchTab(product);
     // Scroll to demo
     document.getElementById('demo').scrollIntoView({behavior: 'smooth'});
+    
+    // Update product cards active state
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.classList.remove('active');
+    });
+    event.currentTarget.classList.add('active');
+  }
+  
+  // MMF Logic
+  let currentMMF = 'genesis';
+  const mmfRates = {
+    genesis: 10.2,
+    britam: 9.8,
+    sanlam: 9.5,
+    corporate: 8.9
+  };
+  
+  function selectMMF(provider, element) {
+    currentMMF = provider;
+    document.querySelectorAll('.mmf-provider').forEach(p => p.classList.remove('active'));
+    element.classList.add('active');
+    calculateMMF();
+  }
+  
+  function calculateMMF() {
+    const usdc = parseFloat(document.getElementById('mmf-input').value) || 0;
+    const rate = mmfRates[currentMMF] / 100;
+    const days = 30; // Show 30-day projection
+    
+    // Daily compounding formula
+    const yield = usdc * Math.pow((1 + rate/365), days);
+    
+    document.getElementById('mmf-output').value = (usdc * 129.5).toLocaleString('en-US', {maximumFractionDigits: 0}) + ' KES_MMF';
+    document.getElementById('mmf-yield').textContent = '$' + yield.toFixed(2);
+    document.getElementById('mmf-period').textContent = `${mmfRates[currentMMF]}% annualized, compounded daily (${days} days)`;
   }
   
   // T-Bill Logic
@@ -1519,15 +1789,19 @@
   };
   const exchangeRate = 129.5;
   
-  function selectTenor(tenor) {
+  function selectTenor(tenor, element) {
     currentTenor = tenor;
     document.querySelectorAll('.tenor-tab').forEach(t => t.classList.remove('active'));
-    event.target.closest('.tenor-tab').classList.add('active');
+    element.classList.add('active');
     calculateTbill();
   }
   
   function calculateTbill() {
-    const usdc = parseFloat(document.getElementById('tbill-input').value) || 0;
+    const usdc = parseFloat(document.getElementById('tbill-input').value);
+    if (isNaN(usdc) || usdc < 0) {
+      document.getElementById('tbill-yield').textContent = '—';
+      return;
+    }
     const rate = rates[currentTenor].rate;
     const yield = usdc * (1 + rate / 100);
     
@@ -1589,7 +1863,41 @@
     document.getElementById('etf-yield').textContent = '$' + futureValue.toFixed(2);
   }
   
+  // Wallet Connection Simulation
+  async function connectWallet() {
+    const btn = event.target;
+    const originalText = btn.textContent;
+    btn.textContent = 'Connecting...';
+    btn.disabled = true;
+    
+    try {
+      await new Promise(r => setTimeout(r, 1000));
+      btn.textContent = 'Wallet Connected ✓';
+      btn.style.background = 'var(--green)';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 2000);
+    } catch(e) {
+      btn.textContent = originalText;
+      btn.disabled = false;
+      alert('Connection failed. Please try again.');
+    }
+  }
+  
+  // Waitlist Submission
+  function submitWaitlist() {
+    const email = document.getElementById('email').value;
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    alert('Thank you — you have been added to the waitlist.');
+  }
+  
   // Initialize
+  calculateMMF();
   calculateTbill();
   calculateBond();
   calculateETF();
